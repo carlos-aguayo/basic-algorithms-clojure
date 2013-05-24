@@ -1,5 +1,7 @@
 # sorting
 
+[![Build Status](https://travis-ci.org/carlos-aguayo/basic-algorithms-clojure.png?branch=master)](https://travis-ci.org/carlos-aguayo/basic-algorithms-clojure)
+
 FIXME: description
 
 ## Installation

@@ -1,0 +1,5 @@
+language: clojure
+
+notifications:
+  email:
+    - carlos.aguayo@gmail.com
