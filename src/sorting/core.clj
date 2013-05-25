@@ -26,3 +26,11 @@
   "Sorts the array of elements using the insertion sort algorithm"
   [elements]
   (insert1 [] elements))
+
+(defn qsort 
+  ;; http://boss-level.com/?p=92
+  [[pivot & tail]]
+  (when pivot
+    (lazy-cat (qsort (filter #(< % pivot) tail))
+              [pivot]
+              (qsort (filter #(> % pivot) tail)))))
