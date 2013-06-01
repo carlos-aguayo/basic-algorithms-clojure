@@ -27,10 +27,10 @@
   [elements]
   (insert1 [] elements))
 
-(defn qsort 
+(defn quick-sort 
   ;; http://boss-level.com/?p=92
   [[pivot & tail]]
   (when pivot
-    (lazy-cat (qsort (filter #(< % pivot) tail))
+    (lazy-cat (quick-sort (filter #(< % pivot) tail))
               [pivot]
-              (qsort (filter #(> % pivot) tail)))))
+              (quick-sort (filter #(> % pivot) tail)))))
