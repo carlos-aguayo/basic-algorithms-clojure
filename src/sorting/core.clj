@@ -30,7 +30,8 @@
 (defn quick-sort 
   ;; http://boss-level.com/?p=92
   [[pivot & tail]]
-  (when pivot
+  (if (nil? pivot)
+    []
     (lazy-cat (quick-sort (filter #(< % pivot) tail))
               [pivot]
               (quick-sort (filter #(> % pivot) tail)))))
