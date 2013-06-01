@@ -36,11 +36,18 @@
               [pivot]
               (quick-sort (filter #(> % pivot) tail)))))
 
-(defn merge0
-  [a b]
+(defn merge*
+  [left right]
   (cond
-    (nil? (first a)) [b]
-    (nil? (first b)) []
-    :else (if (< (first a) (first b)) 
-      (lazy-cat [first a] merge0((rest a) b))
-      (lazy-cat [first b] merge0(a (rest b))))))
+    (nil? left) right
+    (nil? right) left
+    :else (let [[l & *left]  left
+                [r & *right] right]
+             (if (< l r) (cons l (merge* *left   right))
+                         (cons r (merge*  left  *right))))))
+
+(defn merge-sort [L]
+  (if (empty? (rest L)) 
+    L
+    (let [[left right] (split-at (/ (count L) 2) L)]
+      (merge* (merge-sort left) (merge-sort right)))))
