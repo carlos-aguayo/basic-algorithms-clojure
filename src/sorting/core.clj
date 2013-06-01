@@ -35,3 +35,12 @@
     (lazy-cat (quick-sort (filter #(< % pivot) tail))
               [pivot]
               (quick-sort (filter #(> % pivot) tail)))))
+
+(defn merge0
+  [a b]
+  (cond
+    (nil? (first a)) [b]
+    (nil? (first b)) []
+    :else (if (< (first a) (first b)) 
+      (lazy-cat [first a] merge0((rest a) b))
+      (lazy-cat [first b] merge0(a (rest b))))))
